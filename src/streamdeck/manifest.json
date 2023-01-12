@@ -1,0 +1,50 @@
+{
+	"Name": "Adobe Premiere Pro",
+	"Description": "Interact directly with Adobe Premiere Pro from your Stream Deck.",
+	"Author": "Kruithne",
+	"Version": "1.0",
+	"URL": "https://github.com/Kruithne/sdPlugin-ppro",
+	"Icon": "icons/pluginIcon",
+
+	"SDKVersion": 2,
+	"CodePath": "plugin.html",
+
+	"Category": "Adobe Premiere Pro",
+	"CategoryIcon": "icons/categoryIcon",
+
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion" : "10.11"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion" : "10"
+		}
+	],
+
+	"Software": {
+		"MinimumVersion" : "4.1"
+	},
+
+	"Actions": [
+		{
+			"UUID": "net.kruithne.streamdeck.ppro.test",
+
+			"Name": "Test",
+			"Icon": "icons/actionIcon",
+			"Tooltip": "Execute the test",
+
+			"SupportedInMultiActions": true,
+			"PropertyInspectorPath": "propertyInspector/html/test.html",
+
+			"States": [
+				{
+					"Image": "icons/actionDefaultImage",
+					"TitleAlignment": "middle",
+					"FontSize": "16"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>net.kruithne.streamdeck.ppro</title>
+	</head>
+	<body>
+		<script>
+			function connectElgatoStreamDeckSocket(inPort, inPluginUUID, inRegisterEvent, inInfo, inActionInfo) {
+				console.log(document.readyState);
+				console.log(typeof inPort, inPort);
+				console.log(typeof inPluginUUID, inPluginUUID);
+				console.log(typeof inRegisterEvent, inRegisterEvent);
+				console.log(typeof inInfo, inInfo);
+				console.log(typeof inActionInfo, inActionInfo);
+
+				const socket = new WebSocket('ws://127.0.0.1:' + inPort);
+
+				socket.sendJSON = function (json) {
+					this.send(JSON.stringify(json));
+				};
+
+				socket.onopen = function() {
+					this.sendJSON({
+						"event": inRegisterEvent,
+						"uuid": inPluginUUID
+					});
+				};
+
+				socket.onmessage = function (evt) {
+					const json = JSON.parse(evt.data);
+					console.log(json);
+				};
+
+				socket.onclose = function () {
+					// WebSocket is closed.
+				};
+			}
+		</script>
+	</body>
+</html>

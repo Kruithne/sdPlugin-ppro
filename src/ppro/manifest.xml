@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest Version="6.0" ExtensionBundleId="net.kruithne.plugin" ExtensionBundleName="KRU" ExtensionBundleVersion="1.0">
+  <ExtensionList>
+    <Extension Id="net.kruithne.plugin" Version="1.0"/>
+  </ExtensionList>
+  <ExecutionEnvironment>
+      <HostList>
+        <Host Name="PPRO" Version="[14.3,99.9]"/>
+      </HostList>
+      <LocaleList>
+        <Locale Code="All"/>
+      </LocaleList>
+      <RequiredRuntimeList>
+			  <RequiredRuntime Name="CSXS" Version="6.0" />
+		  </RequiredRuntimeList>
+  </ExecutionEnvironment>
+  <DispatchInfoList>
+    <Extension Id="net.kruithne.plugin">
+      <DispatchInfo>
+        <Resources>
+          <MainPath>./index.html</MainPath>
+          <ScriptPath>./index.jsx</ScriptPath>
+          <CEFCommandLine>
+            <Parameter>--allow-file-access-from-files</Parameter>
+            <Parameter>--allow-file-access</Parameter>
+            <Parameter>--enable-nodejs</Parameter>
+            <Parameter>--mixed-content</Parameter>
+          </CEFCommandLine>
+        </Resources>
+        <Lifecycle>
+          <AutoVisible>false</AutoVisible>
+          <StartOn>
+              <!-- Photoshop dispatches this event on startup -->
+              <Event>applicationActivate</Event>
+              <!-- Premiere Pro dispatches this event on startup -->
+              <Event>com.adobe.csxs.events.ApplicationActivate</Event>
+          </StartOn>
+        </Lifecycle>
+        <UI>
+          <Type>Modeless</Type>
+          <Geometry>
+              <Size>
+                  <Height>1</Height>
+                  <Width>1</Width>
+              </Size>
+          </Geometry>
+        </UI>
+      </DispatchInfo>
+    </Extension>
+  </DispatchInfoList>
+</ExtensionManifest>
